@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Movie Catalogue</string>
+    <string name="overview">Overview</string>
+    <string name="popularity">Popularity</string>
+    <string name="rate">Rating</string>
+    <string name="vote_count">Vote Count</string>
+
+    <string name="movie">Movie</string>
+    <string name="tvShow">Tv Show</string>
+    <string name="favorite">Favorite</string>
+
+    <string name="changeLang">Ubah Bahasa</string>
+
+
+</resources>

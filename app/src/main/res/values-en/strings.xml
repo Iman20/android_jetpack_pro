@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Movie Catalogue</string>
+    <string name="overview">Overview</string>
+
+    <string name="movie">Movie</string>
+    <string name="tvShow">Tv Show</string>
+    <string name="favorite">Favorite</string>
+
+    <string name="changeLang">Change Language</string>
+
+
+</resources>

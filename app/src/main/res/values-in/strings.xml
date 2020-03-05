@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Katalog Film</string>
+    <string name="overview">Ikhtisar</string>
+    <string name="popularity">Popularitas</string>
+    <string name="rate">Peringkat</string>
+    <string name="vote_count">Jumlah Pemilih</string>
+
+    <string name="movie">Film</string>
+    <string name="tvShow">Tv Serie</string>
+    <string name="favorite">Favorite</string>
+
+    <string name="changeLang">Ubah Bahasa</string>
+
+
+</resources>

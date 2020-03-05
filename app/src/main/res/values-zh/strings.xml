@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">电影目录</string>
+    <string name="overview">总览</string>
+    <string name="popularity">人气</string>
+    <string name="rate">评分</string>
+    <string name="vote_count">票数</string>
+
+    <string name="movie">电影</string>
+    <string name="tvShow">电视节目</string>
+    <string name="favorite">Favorite</string>
+
+    <string name="changeLang">变更语言</string>
+
+
+</resources>
