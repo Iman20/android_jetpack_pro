@@ -8,7 +8,7 @@ import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.example.jetpack.BuildConfig
-import com.example.jetpack.model.Movie
+import com.example.jetpack.data.model.Movie
 import org.json.JSONObject
 
 

@@ -7,7 +7,7 @@ import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.jetpack.model.Movie
+import com.example.jetpack.data.model.Movie
 import com.example.jetpack.viewmodel.DetailViewModel
 import kotlinx.android.synthetic.main.detail_activity.*
 

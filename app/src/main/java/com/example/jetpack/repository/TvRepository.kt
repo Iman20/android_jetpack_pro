@@ -8,8 +8,8 @@ import com.androidnetworking.common.ANRequest
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.example.jetpack.BuildConfig
-import com.example.jetpack.dao.MovieDao
-import com.example.jetpack.model.Movie
+import com.example.jetpack.data.dao.MovieDao
+import com.example.jetpack.data.model.Movie
 import com.example.jetpack.utils.RateLimiter
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

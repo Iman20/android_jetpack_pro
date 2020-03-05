@@ -1,4 +1,4 @@
-package com.example.jetpack.fragment
+package com.example.jetpack.presentation.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jetpack.DetailActivity
 import com.example.jetpack.R
-import com.example.jetpack.adapter.MovieAdapter
-import com.example.jetpack.model.Movie
+import com.example.jetpack.data.adapter.MovieAdapter
+import com.example.jetpack.data.model.Movie
 import com.example.jetpack.viewmodel.FavoriteViewModel
 import kotlinx.android.synthetic.main.favorite_layout.*
 

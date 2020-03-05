@@ -2,7 +2,7 @@ package com.example.jetpack.di
 
 import com.androidnetworking.AndroidNetworking
 import com.example.jetpack.BuildConfig
-import com.example.jetpack.database.MovieDatabase
+import com.example.jetpack.data.database.MovieDatabase
 import com.example.jetpack.repository.TvRepository
 import com.example.jetpack.viewmodel.TVViewModel
 import org.koin.android.ext.koin.androidContext

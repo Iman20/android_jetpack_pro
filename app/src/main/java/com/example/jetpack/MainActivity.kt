@@ -10,9 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.androidnetworking.AndroidNetworking
 import com.example.jetpack.di.allModule
-import com.example.jetpack.fragment.FavoriteFragment
-import com.example.jetpack.fragment.MovieFragment
-import com.example.jetpack.fragment.TvFragment
+import com.example.jetpack.presentation.fragment.FavoriteFragment
+import com.example.jetpack.presentation.fragment.MovieFragment
+import com.example.jetpack.presentation.fragment.TvFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.OkHttpClient

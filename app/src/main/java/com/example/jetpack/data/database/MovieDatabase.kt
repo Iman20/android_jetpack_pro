@@ -1,4 +1,4 @@
-package com.example.jetpack.database
+package com.example.jetpack.data.database
 
 import android.content.Context
 import androidx.room.Database
@@ -6,8 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.jetpack.dao.MovieDao
-import com.example.jetpack.model.Movie
+import com.example.jetpack.data.dao.MovieDao
+import com.example.jetpack.data.model.Movie
 
 @Database(
     entities = [Movie::class],

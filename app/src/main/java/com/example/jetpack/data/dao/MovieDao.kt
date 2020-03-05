@@ -1,8 +1,8 @@
-package com.example.jetpack.dao
+package com.example.jetpack.data.dao
 
 import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
-import com.example.jetpack.model.Movie
+import com.example.jetpack.data.model.Movie
 
 @Dao
 interface MovieDao {

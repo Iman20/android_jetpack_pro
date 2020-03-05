@@ -1,4 +1,4 @@
-package com.example.jetpack.model
+package com.example.jetpack.data.model
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

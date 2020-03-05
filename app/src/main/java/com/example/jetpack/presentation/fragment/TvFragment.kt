@@ -1,4 +1,4 @@
-package com.example.jetpack.fragment
+package com.example.jetpack.presentation.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,19 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jetpack.DetailActivity
 import com.example.jetpack.R
-import com.example.jetpack.adapter.MovieAdapter
-import com.example.jetpack.model.Movie
-import com.example.jetpack.viewmodel.MovieViewModel
-import kotlinx.android.synthetic.main.movie_layout.*
+import com.example.jetpack.data.adapter.MovieAdapter
+import com.example.jetpack.data.model.Movie
+import com.example.jetpack.viewmodel.TVViewModel
+import org.koin.android.viewmodel.ext.android.viewModel
+import kotlinx.android.synthetic.main.tv_layout.*
 
-class MovieFragment : Fragment() {
+class TvFragment : Fragment() {
     private lateinit var adapter: MovieAdapter
-    private var movies = arrayListOf<Movie>()
-    private lateinit var movieViewModel : MovieViewModel
+    private var tvs = arrayListOf<Movie>()
+//    private val tvViewModel: TVViewModel by viewModels()
+    private val tvViewModel : TVViewModel by viewModel()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,39 +30,38 @@ class MovieFragment : Fragment() {
     ): View? {
         initData()
         initListener()
-        return inflater.inflate(R.layout.movie_layout, container, false)
+        return inflater.inflate(R.layout.tv_layout, container, false)
     }
 
-    private fun showLoading(b: Boolean) {
+
+    private fun showDialog(b: Boolean) {
         if(b){
             progressBar.visibility = View.VISIBLE
         } else {
             progressBar.visibility = View.GONE
         }
-
     }
 
     private fun initListener() {
-        movieViewModel.getMoview().observe(this, Observer {
-            mov ->
-            if (mov != null){
-                movies.addAll(mov)
+        tvViewModel.getTv().observe(this, Observer {
+            tv ->
+            if (tv != null){
+                tvs.addAll(tv)
                 initRecycle()
-                showLoading(false)
+                showDialog(false)
             }
+
         })
     }
 
-
     private fun initData() {
-        movieViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MovieViewModel::class.java)
-        movieViewModel.initialMovie()
+//        tvViewModel.getTv()
     }
 
     private fun initRecycle() {
-        movieRv.layoutManager = LinearLayoutManager(context)
-        adapter = context?.let { MovieAdapter(movies) }!!
-        movieRv.adapter = adapter
+        tvRv.layoutManager = LinearLayoutManager(context)
+        adapter = context?.let { MovieAdapter(tvs) }!!
+        tvRv.adapter = adapter
         adapter.setOnClickListener(object : MovieAdapter.OnItemClickListener{
             override fun OnItemClicked(movie: Movie) {
                 val intent = Intent(context, DetailActivity::class.java)

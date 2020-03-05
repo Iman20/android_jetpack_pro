@@ -1,4 +1,4 @@
-package com.example.jetpack.adapter
+package com.example.jetpack.data.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.jetpack.R
-import com.example.jetpack.model.Movie
+import com.example.jetpack.data.model.Movie
 
 class MovieAdapter internal constructor(private val movies: ArrayList<Movie>): RecyclerView.Adapter<MovieAdapter.ViewHolder>(){
 
