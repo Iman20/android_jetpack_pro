@@ -42,7 +42,7 @@ google.material = "com.google.android.material:material:$versions.googlematerial
 deps.google = google
 
 def fan = [:]
-fan.fan = "com.google.android.material:material:$versions.google"
+fan.fan = "com.amitshekhar.android:android-networking:$versions.fan"
 deps.fan = fan
 
 def glide = [:]
