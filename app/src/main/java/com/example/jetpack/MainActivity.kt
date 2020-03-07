@@ -26,8 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initView()
-        initFastAndroidNetworking(applicationContext)
-        AndroidNetworking.initialize(applicationContext)
+//        initFastAndroidNetworking(applicationContext)
         startKoin {
             androidLogger()
             androidContext(this@MainActivity)

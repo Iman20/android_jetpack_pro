@@ -1,0 +1,76 @@
+ext.deps = [:]
+def versions = [:]
+
+versions.kotlin = "1.3.61"
+versions.retrofit = "2.3.0"
+versions.koin = "2.0.1"
+versions.room = "2.2.3"
+versions.fragment = "1.2.2"
+versions.androidx = "1.1.0"
+versions.constraintlayout = "1.1.3"
+versions.googlematerial = "1.0.0"
+versions.glide = "4.4.0"
+versions.fan = "1.0.2"
+versions.loopj = "1.4.9"
+
+def build_versions = [:]
+build_versions.min_sdk = 21
+build_versions.compile_sdk = 29
+build_versions.target_sdk = 29
+build_versions.build_tools = "29.0.3"
+ext.build_versions = build_versions
+
+def deps = [:]
+
+def kotlin = [:]
+kotlin.kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+deps.kotlin = kotlin
+
+def androidx = [:]
+androidx.appcompat = "androidx.appcompat:appcompat:$versions.androidx"
+androidx.core = "androidx.core:core-ktx:$versions.androidx"
+androidx.constraintlayout = "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
+androidx.recycleview = "androidx.recyclerview:recyclerview:$versions.androidx"
+deps.androidx = androidx
+
+def loopj = [:]
+loopj.loopj = "com.loopj.android:android-async-http:$versions.loopj"
+deps.loopj = loopj
+
+def google = [:]
+google.material = "com.google.android.material:material:$versions.googlematerial"
+deps.google = google
+
+def fan = [:]
+fan.fan = "com.google.android.material:material:$versions.google"
+deps.fan = fan
+
+def glide = [:]
+glide.glide = "com.github.bumptech.glide:glide:$versions.glide"
+glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+deps.glide = glide
+
+def room = [:]
+room.runtime = "androidx.room:room-runtime:$versions.room"
+room.ktx =  "androidx.room:room-ktx:$versions.room"
+room.rxjava = "androidx.room:room-rxjava2:$versions.room"
+room.compiler = "androidx.room:room-compiler:$versions.room"
+deps.room = room
+
+def retrofit = [:]
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+retrofit.mock = "com.squareup.retrofit2:retrofit-mock:$versions.retrofit"
+deps.retrofit = retrofit
+
+def koin = [:]
+koin.android = "org.koin:koin-android:$versions.koin"
+koin.viewmodel = "org.koin:koin-android-viewmodel:$versions.koin"
+koin.test = "org.koin:koin-test:$versions.koin"
+deps.koin = koin
+
+def fragment = [:]
+fragment.fragment = "androidx.fragment:fragment-ktx:$versions.fragment"
+deps.fragment = fragment
+
+ext.deps = deps

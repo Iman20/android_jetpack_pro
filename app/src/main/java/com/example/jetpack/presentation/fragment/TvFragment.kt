@@ -12,6 +12,8 @@ import com.example.jetpack.DetailActivity
 import com.example.jetpack.R
 import com.example.jetpack.data.adapter.MovieAdapter
 import com.example.jetpack.data.model.Movie
+import com.example.jetpack.utils.hide
+import com.example.jetpack.utils.show
 import com.example.jetpack.viewmodel.TVViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 import kotlinx.android.synthetic.main.tv_layout.*
@@ -19,7 +21,6 @@ import kotlinx.android.synthetic.main.tv_layout.*
 class TvFragment : Fragment() {
     private lateinit var adapter: MovieAdapter
     private var tvs = arrayListOf<Movie>()
-//    private val tvViewModel: TVViewModel by viewModels()
     private val tvViewModel : TVViewModel by viewModel()
 
 
@@ -36,9 +37,9 @@ class TvFragment : Fragment() {
 
     private fun showDialog(b: Boolean) {
         if(b){
-            progressBar.visibility = View.VISIBLE
+            progressBar.show()
         } else {
-            progressBar.visibility = View.GONE
+            progressBar.hide()
         }
     }
 
@@ -55,7 +56,7 @@ class TvFragment : Fragment() {
     }
 
     private fun initData() {
-//        tvViewModel.getTv()
+        tvViewModel.getTv()
     }
 
     private fun initRecycle() {
