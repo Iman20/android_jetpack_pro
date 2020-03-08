@@ -12,26 +12,26 @@ import com.example.jetpack.utils.RateLimiter
 import com.example.jetpack.vo.Resource
 import java.util.concurrent.TimeUnit
 
-class TvRepository(
+class MovieRepository(
     private val appExecutors: AppExecutors,
     private val databaseHelper: DatabaseHelper,
     private val movieService: MovieService
 ) {
     companion object{
-        val repoListRateLimit = RateLimiter<String>(1, TimeUnit.MINUTES)
+        val repoListRateLimit = RateLimiter<String>(3, TimeUnit.MINUTES)
     }
 
-    fun getTv():LiveData<Resource<List<Movie>>>{
+    fun getMovie(): LiveData<Resource<List<Movie>>> {
         return object : NetworkBoundResource<List<Movie>, ResponseModel>(appExecutors){
             override fun saveCallResult(item: ResponseModel) {
                 item.data?.forEach {
-                    it.type = Constant.tv
+                    it.type = Constant.movie
                     databaseHelper.movieDatabase.movieDao().insertAll(it)
                 }
             }
-            override fun shouldFetch() = repoListRateLimit.shouldFetch("tvMovie")
-            override fun loadFromDb() = databaseHelper.movieDatabase.movieDao().getByType(Constant.tv)
-            override fun createCall() = movieService.getTv()
+            override fun shouldFetch() = repoListRateLimit.shouldFetch("movieMovie")
+            override fun loadFromDb() = databaseHelper.movieDatabase.movieDao().getByType(Constant.movie)
+            override fun createCall() = movieService.getMovie()
 
         }.asLiveData()
     }

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.jetpack.R
 import com.example.jetpack.data.model.Movie
+import com.example.jetpack.utils.Constant
 
 class MovieAdapter internal constructor(private val movies: ArrayList<Movie>): RecyclerView.Adapter<MovieAdapter.ViewHolder>(){
 
@@ -47,7 +48,7 @@ class MovieAdapter internal constructor(private val movies: ArrayList<Movie>): R
             textTitle.text = movie.title
             textSubTitle.text = movie.description
 //            image.setImageResource(movie.image)
-            Glide.with(itemView).load(movie.posterPath).into(image)
+            Glide.with(itemView).load(Constant.posterUrl + movie.posterPath).into(image)
             container.setOnClickListener {
                 onItemClickListener.OnItemClicked(movie)
             }

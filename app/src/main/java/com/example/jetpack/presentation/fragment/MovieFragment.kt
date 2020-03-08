@@ -7,19 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jetpack.DetailActivity
 import com.example.jetpack.R
 import com.example.jetpack.data.adapter.MovieAdapter
 import com.example.jetpack.data.model.Movie
+import com.example.jetpack.utils.hide
+import com.example.jetpack.utils.show
 import com.example.jetpack.viewmodel.MovieViewModel
+import com.example.jetpack.vo.Status
 import kotlinx.android.synthetic.main.movie_layout.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieFragment : Fragment() {
     private lateinit var adapter: MovieAdapter
     private var movies = arrayListOf<Movie>()
-    private lateinit var movieViewModel : MovieViewModel
+    private val movieModel : MovieViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,18 +36,18 @@ class MovieFragment : Fragment() {
 
     private fun showLoading(b: Boolean) {
         if(b){
-            progressBar.visibility = View.VISIBLE
+            progressBar.show()
         } else {
-            progressBar.visibility = View.GONE
+            progressBar.hide()
         }
 
     }
 
     private fun initListener() {
-        movieViewModel.getMoview().observe(this, Observer {
-            mov ->
-            if (mov != null){
-                movies.addAll(mov)
+        movieModel.getMovie().observe(this, Observer {
+            res ->
+            if (res.status == Status.SUCCESS){
+                res.data?.let { movies.addAll(it) }
                 initRecycle()
                 showLoading(false)
             }
@@ -53,8 +56,7 @@ class MovieFragment : Fragment() {
 
 
     private fun initData() {
-        movieViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MovieViewModel::class.java)
-        movieViewModel.initialMovie()
+        movieModel.getMovie()
     }
 
     private fun initRecycle() {

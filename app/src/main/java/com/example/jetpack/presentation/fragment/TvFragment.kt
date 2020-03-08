@@ -15,6 +15,7 @@ import com.example.jetpack.data.model.Movie
 import com.example.jetpack.utils.hide
 import com.example.jetpack.utils.show
 import com.example.jetpack.viewmodel.TVViewModel
+import com.example.jetpack.vo.Status
 import org.koin.android.viewmodel.ext.android.viewModel
 import kotlinx.android.synthetic.main.tv_layout.*
 
@@ -45,9 +46,9 @@ class TvFragment : Fragment() {
 
     private fun initListener() {
         tvViewModel.getTv().observe(this, Observer {
-            tv ->
-            if (tv != null){
-                tvs.addAll(tv)
+            res ->
+            if (res.status == Status.SUCCESS){
+                res.data?.let { tvs.addAll(it) }
                 initRecycle()
                 showDialog(false)
             }

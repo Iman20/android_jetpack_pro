@@ -1,5 +1,6 @@
 package com.example.jetpack.data.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
 import com.example.jetpack.data.model.Movie
@@ -10,7 +11,10 @@ interface MovieDao {
     fun insertAll(vararg  movie: Movie)
 
     @Query("SELECT * FROM movie")
-    fun getAll() : List<Movie>
+    fun getAll() : LiveData<List<Movie>>
+
+    @Query("SELECT * FROM movie WHERE type =:type")
+    fun getByType(type: String) : LiveData<List<Movie>>
 
     @Query("SELECT * FROM movie WHERE title LIKE :title")
     fun getByTitle(title: String): Movie
