@@ -11,10 +11,16 @@ interface MovieDao {
     fun insertAll(vararg  movie: Movie)
 
     @Query("SELECT * FROM movie")
-    fun getAll() : LiveData<List<Movie>>
+    fun getAll() : List<Movie>
 
     @Query("SELECT * FROM movie WHERE type =:type")
     fun getByType(type: String) : LiveData<List<Movie>>
+
+    @Query("SELECT * FROM movie WHERE type =:type and favorite =:favorite")
+    fun getFavorite(type: String,favorite: Boolean) : Movie
+
+    @Query("SELECT * FROM movie WHERE favorite =:favorite")
+    fun getAllFavorite(favorite: Boolean) : List<Movie>
 
     @Query("SELECT * FROM movie WHERE title LIKE :title")
     fun getByTitle(title: String): Movie

@@ -3,11 +3,15 @@ package com.example.jetpack.di
 import NetworkInterceptor
 import com.example.jetpack.data.database.DatabaseHelper
 import com.example.jetpack.network.services.MovieService
+import com.example.jetpack.repository.DetailRepository
+import com.example.jetpack.repository.FavoriteRepository
 import com.example.jetpack.repository.MovieRepository
 import com.example.jetpack.repository.TvRepository
 import com.example.jetpack.utils.AppExecutors
 import com.example.jetpack.utils.Constant
 import com.example.jetpack.utils.LiveDataCallAdapterFactory
+import com.example.jetpack.viewmodel.DetailViewModel
+import com.example.jetpack.viewmodel.FavoriteViewModel
 import com.example.jetpack.viewmodel.MovieViewModel
 import com.example.jetpack.viewmodel.TVViewModel
 import okhttp3.OkHttpClient
@@ -31,11 +35,15 @@ val appModule = module {
 val repositoryModule = module {
     factory { TvRepository(get(), get(), get()) }
     factory { MovieRepository(get(), get(), get()) }
+    factory { DetailRepository(get(), get()) }
+    factory { FavoriteRepository(get(), get()) }
 }
 
 val viewModule = module {
     viewModel { TVViewModel(get()) }
     viewModel { MovieViewModel(get()) }
+    viewModel { DetailViewModel(get()) }
+    viewModel { FavoriteViewModel(get()) }
 }
 
 val allModule = listOf(appModule, viewModule, repositoryModule)

@@ -5,10 +5,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.jetpack.data.model.Movie
+import com.example.jetpack.repository.DetailRepository
+import com.example.jetpack.vo.Resource
 
-class DetailViewModel : ViewModel() {
+class DetailViewModel(
+    private val detailRepository: DetailRepository
+) : ViewModel() {
 
-    private var movie = MutableLiveData<Movie>()
+
+    fun initFavorite(title: String): LiveData<Movie>{
+        return detailRepository.initFavorite(title)
+    }
+
 
     fun initialDetail(context: Context, title: String){
 //        val db = MovieDatabase(context)
@@ -18,21 +26,12 @@ class DetailViewModel : ViewModel() {
 //        }
     }
 
-    fun addFavorite(context: Context, movie: Movie){
-//        val db = MovieDatabase(context)
-//        GlobalScope.launch {
-//            db.MovieDao().insertAll(movie)
-//        }
+    fun addFavorite(movie: Movie){
+        detailRepository.addFavorite(movie)
     }
 
-    fun deleteFavorite(context: Context, movie: Movie){
-//        val db = MovieDatabase(context)
-//        GlobalScope.launch {
-//            db.MovieDao().delete(movie)
-//        }
-    }
-    internal fun getDetail(): LiveData<Movie>{
-        return movie
+    fun deleteFavorite(movie: Movie){
+        detailRepository.deleteFavorite(movie)
     }
 
 }

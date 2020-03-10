@@ -1,11 +1,16 @@
 package com.example.jetpack.data.model
 
 import android.os.Parcelable
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
+
 
 @Entity(tableName = "movie")
 @Parcelize
@@ -47,5 +52,7 @@ data class Movie (
     @ColumnInfo(name = "backdropPath")
     var backdropPath: String? = null,
     @ColumnInfo(name = "type")
-    var type: String? = null
+    var type: String? = null,
+    @ColumnInfo(name = "favorite")
+    var favorite: Boolean? = null
 ) : Parcelable

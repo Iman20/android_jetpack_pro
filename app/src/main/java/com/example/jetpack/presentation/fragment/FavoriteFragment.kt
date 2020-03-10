@@ -13,14 +13,17 @@ import com.example.jetpack.DetailActivity
 import com.example.jetpack.R
 import com.example.jetpack.data.adapter.MovieAdapter
 import com.example.jetpack.data.model.Movie
+import com.example.jetpack.utils.hide
+import com.example.jetpack.utils.show
 import com.example.jetpack.viewmodel.FavoriteViewModel
 import kotlinx.android.synthetic.main.favorite_layout.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class FavoriteFragment : Fragment() {
 
     private lateinit var adapter: MovieAdapter
     private var fav = arrayListOf<Movie>()
-    private lateinit var favoriteViewModel: FavoriteViewModel
+    private val favoriteViewModel : FavoriteViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,13 +38,12 @@ class FavoriteFragment : Fragment() {
 
     override fun onResume() {
         fav.clear()
-        favoriteViewModel.initialFavorite(context!!)
+        initListener()
         super.onResume()
     }
 
     private fun initData() {
-        favoriteViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(FavoriteViewModel::class.java)
-        favoriteViewModel.initialFavorite(context!!)
+        initListener()
     }
 
     private fun initListener() {
@@ -71,9 +73,9 @@ class FavoriteFragment : Fragment() {
 
     private fun showDialog(b: Boolean) {
         if(b){
-            progressBar.visibility = View.VISIBLE
+            progressBar.show()
         } else {
-            progressBar.visibility = View.GONE
+            progressBar.hide()
         }
     }
 }
